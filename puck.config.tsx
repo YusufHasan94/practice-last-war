@@ -7,6 +7,9 @@ type params = {
   HeadingBlock: {children: any};
   ProfCard: {Cardtitle: any,  Description:any};
   Container: {Comp: any};
+  Example:{children: any};
+  Title: {SectionTitle: any};
+  GameCard :{imageUrl: any, cardTitle: any, cardDescription: any, badge: any};
 }
 
 const Columns = () => (
@@ -17,7 +20,7 @@ const Columns = () => (
   </div>
 );
 
-const config = {
+const config: Config<params> = {
   components: {
     Example: {
       fields: {
