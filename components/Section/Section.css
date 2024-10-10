@@ -1,0 +1,15 @@
+.msrd .msrd-Section {
+    padding-left: var(--space-horizontal);
+    padding-right: var(--space-horizontal);
+  }
+  
+  .msrd .msrd-Section-inner {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: var(--section-max-width);
+  }
+  
+  .msrd .msrd-Section--narrow .msrd-Section-inner {
+    max-width: var(--section-max-width-narrow);
+  }
+  

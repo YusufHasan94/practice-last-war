@@ -1,24 +1,107 @@
-import type { Config } from "@measured/puck";
+import { Config, DropZone } from "@measured/puck";
+import BusinessCard from "./components/BusinessCard/BusinessCard";
+import Title from "./components/Title/Title";
+import GameCard from "./components/GameCard/GameCard";
 
-type Props = {
-  HeadingBlock: { title: string };
-};
+type params = {
+  HeadingBlock: {children: any};
+  ProfCard: {Cardtitle: any,  Description:any};
+  Container: {Comp: any};
+}
 
-export const config: Config<Props> = {
+const Columns = () => (
+  <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 16 }}>
+    <DropZone zone="my-content" style={{display: "flex", justifyContent: "center"}} />
+    <DropZone zone="my-content2" style={{display: "flex", justifyContent: "center"}} />
+    <DropZone zone="my-content3" style={{display: "flex", justifyContent: "center"}} />
+  </div>
+);
+
+const config = {
   components: {
+    Example: {
+      fields: {
+        children: {
+          type: "text",
+        },
+      },
+      render: () => {
+        return (
+          <div>
+             <Columns />
+          </div>
+        );
+      },
+    },
     HeadingBlock: {
       fields: {
-        title: { type: "text" },
+        children: {
+          type: "text",
+        },
+      },
+      render: ({ children }) => {
+        return <h1>{children}</h1>;
+      },
+    },
+    ProfCard: {
+      fields: {
+        Cardtitle: {type: "text"},
+        Description: {type: "textarea"}
       },
       defaultProps: {
-        title: "Heading",
+        Cardtitle: "Card title",
+        Description :"Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
       },
-      render: ({ title }) => (
-        <div style={{ padding: 64 }}>
-          <h1>{title}</h1>
-        </div>
-      ),
+      render : ({Cardtitle, Description})=>{
+        return(
+          <BusinessCard cardtitle={Cardtitle} description={Description}/>
+        )
+      }
     },
+    Container: {
+      fields:{
+        Comp: {type: "text"}
+      },
+      defaultProps:{
+        Comp: "textarea"
+      },
+      render: ({Comp})=>{
+        return(
+          <div>
+            {Comp}
+          </div>
+        )
+      }
+    },
+    Title: {
+      fields: {
+        SectionTitle: {type: "text"}
+      },
+      defaultProps:{
+        SectionTitle: "Title"
+      },
+      render: ({SectionTitle="Section"})=>{
+        return <Title title={SectionTitle}/>
+      }
+    },
+    GameCard: {
+      fields: {
+        imageUrl: {type: "textarea"},
+        cardTitle: {type: "text"},
+        cardDescription: {type: "textarea"},
+        badge: {type: "text"}
+
+      },
+      defaultProps:{
+        imageUrl: "url",
+        cardTitle: "title",
+        cardDescription: "decription",
+        badge: "badge"
+      },
+      render :({imageUrl, cardTitle, cardDescription, badge})=>{
+        return <GameCard imageUrl={imageUrl} cardTitle={cardTitle} cardDescription={cardDescription} badge={badge} />
+      }
+    }
   },
 };
 

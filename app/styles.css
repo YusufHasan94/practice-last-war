@@ -1,3 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 body {
-  margin: 0;
+  background-image: url('https://img.freepik.com/free-photo/cool-geometric-triangular-figure-neon-laser-light-great-backgrounds_181624-11068.jpg?t=st=1728539413~exp=1728543013~hmac=0341fd9f7983dd18d7ee29ed404eff25d8dde79014f70774865b0bb01d419ef5&w=1480');
+  background-attachment: fixed;
+  background-size: cover;
+}
+ body>div{
+  max-width: 1220px;
+  min-height: 100vh;
+  margin: 0 auto;
+  background-color: #ffffff47;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
 }
