@@ -8,10 +8,9 @@ type params = {
   HeadingBlock: {children: any};
   ProfCard: {Cardtitle: any,  Description:any};
   Container: {Comp: any};
-  Example:{children: any};
+  Columns:{children: any};
   Title: {SectionTitle: any};
   GameCard :{imageUrl: any, cardTitle: any, cardDescription: any, badge: any};
-  Example2: {items: any};
   Grid: {items: any; col: any; gap: any};
 }
 
@@ -25,7 +24,7 @@ const Columns = () => (
 
 const config: Config<params> = {
   components: {
-    Example: {
+    Columns: {
       fields: {
         children: {
           type: "text",
@@ -107,25 +106,6 @@ const config: Config<params> = {
       render :({imageUrl, cardTitle, cardDescription, badge})=>{
         return <GameCard imageUrl={imageUrl} cardTitle={cardTitle} cardDescription={cardDescription} badge={badge} />
       }
-    },
-    Example2: {
-      fields: {
-        items: {
-          type: "array",
-          arrayFields: {
-            title: { type: "text" },
-          },
-        },
-      },
-      render: ({ items }) => {
-        return (
-          <ul style={{color: "white", fontSize: "24px", display:"grid", gridTemplateColumns: "repeat(3, 1fr)", gap:"20px"}}>
-            {items?.map((item, i) => (
-              <DropZone zone={`${item.title}`} style={{display: "flex", justifyContent: "center"}} />
-            ))}
-          </ul>
-        );
-      },
     },
     Grid: {
       fields:{
