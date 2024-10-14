@@ -142,7 +142,7 @@ const config: Config<params> = {
           type: "number"
         }
       },
-      render :({items, col=2, gap="20px"})=> <Grid items={items} col={col} gap={gap}/>
+      render :({items, col=2, gap=20})=> <Grid items={items} col={col} gap={gap}/>
     }
   },
 };

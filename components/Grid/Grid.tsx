@@ -3,9 +3,9 @@ import React from 'react'
 
 const Grid = ({items, col, gap}) => {
   return (
-    <ul style={{color: "white", fontSize: "24px", display:"grid", gridTemplateColumns: `repeat(${col}, 1fr)`, gap:`${gap}`}}>
+    <ul style={{color: "white", fontSize: "24px", display:"grid", gridTemplateColumns: `repeat(${col}, 1fr)`, gap:`${gap}px`}}>
         {items?.map((item, i) => (
-            <DropZone zone={`${item.title}`} style={{display: "flex", justifyContent: "center"}} />
+            <DropZone key={i} zone={`${item.zone}`} style={{display: "flex", justifyContent: "center"}} />
         ))}
     </ul>
   )
